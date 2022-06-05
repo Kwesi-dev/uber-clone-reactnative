@@ -3,7 +3,8 @@ import React from 'react'
 import { Icon } from '@rneui/themed'
 import tw from "twrnc"
 import { useNavigation } from '@react-navigation/native'
-
+import { selectTravelTimeInformation } from '../redux/slices/navSlice'
+import { useSelector } from 'react-redux'
 const data = [
   {
     id: "Uber-X-123",
@@ -27,6 +28,8 @@ const data = [
 const RideOptionsCard = () => {
   const navigation = useNavigation()
   const [selected, setSelected] = React.useState(null)
+  // const travelTimeInformation = useSelector(selectTravelTimeInformation);
+
   return (
     <SafeAreaView style={tw`bg-white flex-grow`}>
       <View>
@@ -34,9 +37,9 @@ const RideOptionsCard = () => {
           onPress={() => navigation.navigate("NavigationCard")}
           style={tw`absolute top-3 left-5 z-50 p-3 rounded-full`}
         >
-          <Icon name="chevron-Left" type="fontawesome"/>
+          <Icon name="chevron-left" type="fontawesome"/>
         </TouchableOpacity>
-        <Text style={tw`py-5 text-center text-xl`}>Select a Ride</Text>
+        <Text style={tw`py-5 text-center text-xl`}>Select a Ride-</Text>
       </View>
       <FlatList
         data={data}
@@ -54,7 +57,7 @@ const RideOptionsCard = () => {
             />
             <View style={tw`-ml-6`}>
               <Text style={tw`text-xl font-semibold`}>{item.title}</Text>
-              <Text>Travel time...</Text>
+              <Text>Travel time</Text>
             </View>
             <Text style={tw`text-xl`}>$99</Text>
           </TouchableOpacity>
