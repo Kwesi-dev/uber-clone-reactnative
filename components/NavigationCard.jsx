@@ -1,4 +1,4 @@
-import { SafeAreaView, StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { SafeAreaView, StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native'
 import React from 'react'
 import tw from "twrnc"
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete'
@@ -13,6 +13,7 @@ const NavigationCard = () => {
     const dispatch = useDispatch()
   return (
       <SafeAreaView style={tw`bg-white flex-1`}>
+        <ScrollView>
         <Text style={tw`text-center py-5 text-xl`}>Good Morning, Samuel</Text>
         <View style={tw`border-t border-gray-200 flex-shrink`}>
             <View>
@@ -56,6 +57,7 @@ const NavigationCard = () => {
                 <Text style={tw`text-center`}>Ride</Text>
             </TouchableOpacity>
         </View>
+        </ScrollView>
       </SafeAreaView>
   )
 }

@@ -1,4 +1,4 @@
-import { FlatList, Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { FlatList, Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View, ScrollView } from 'react-native'
 import React from 'react'
 import { Icon } from '@rneui/themed'
 import tw from "twrnc"
@@ -32,6 +32,7 @@ const RideOptionsCard = () => {
 
   return (
     <SafeAreaView style={tw`bg-white flex-grow`}>
+      <ScrollView>
       <View>
         <TouchableOpacity
           onPress={() => navigation.navigate("NavigationCard")}
@@ -41,7 +42,27 @@ const RideOptionsCard = () => {
         </TouchableOpacity>
         <Text style={tw`py-5 text-center text-xl`}>Select a Ride-</Text>
       </View>
-      <FlatList
+      <ScrollView>
+        {data.map((item)=>
+          <TouchableOpacity style={tw`flex-row items-center justify-between px-10 ${selected?.id === item.id && "gb-gray-200"}`}
+          onPress={()=>setSelected(item)} key={item.id}
+          >
+          <Image source={{uri: item.image}}
+            style={{
+              height: 100,
+              width: 100,
+              resizable: true
+            }}
+          />
+          <View style={tw`-ml-6`}>
+            <Text style={tw`text-xl font-semibold`}>{item.title}</Text>
+            <Text>Travel time</Text>
+          </View>
+          <Text style={tw`text-xl`}>$99</Text>
+        </TouchableOpacity>  
+        )}
+      </ScrollView>
+      {/* <FlatList
         data={data}
         keyExtractor={(data)=>data.id}
         renderItem={({item})=>(
@@ -62,12 +83,13 @@ const RideOptionsCard = () => {
             <Text style={tw`text-xl`}>$99</Text>
           </TouchableOpacity>
         )}
-      />
+      /> */}
       <View>
         <TouchableOpacity disabled={!selected} style={tw`bg-black py-3 m-3 ${!selected && "bg-gray-300"}`}>
           <Text style={tw`text-center text-white text-xl`}>Choose {selected?.title}</Text>
         </TouchableOpacity>
       </View>
+      </ScrollView>
     </SafeAreaView>
   )
 }

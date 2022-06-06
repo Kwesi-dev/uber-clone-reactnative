@@ -10,7 +10,7 @@ const Homescreen = () => {
   const dispatch = useDispatch()
   return (
     <SafeAreaView style={tw`bg-white h-full`}>
-      <View style={tw`p-5`}>
+      <ScrollView style={tw`p-5`}>
           <Image
             style={styles.logo}
             source={{uri: "https://links.papareact.com/gzs"}}
@@ -46,7 +46,7 @@ const Homescreen = () => {
             />
           <NavOptions/>
           <NavFavourites/>
-      </View>
+      </ScrollView>
     </SafeAreaView>
   )
 }
